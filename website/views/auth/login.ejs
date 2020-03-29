@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <%-  include('../includes/head.ejs') %>
+  <body>
+    <%-  include('../includes/nav.ejs') %>
+
+    <div class="m-5">
+        
+      <h2 class="text-center">LogIn Form</h2>
+
+      <% if (errorMessage) { %>
+        <div class="row">
+         <div class="col-lg-3 col-md-2 col-sm-1"></div>
+         <div class="col-lg-6 col-md-8 col-sm- 10 bg-danger text-center"> <%= errorMessage %> </div>
+         <div class="col-lg-3 col-md-2 col-sm-1"></div>        
+        </div>
+      <% } %>
+    <form action="/auth/login" method="POST">
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"   value="<%= oldInput.email %>" >
+        </div>
+        <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" value="<%= oldInput.password %>">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+    <button class="btn btn-light mt-3"><a href="#">Forget Password</a></button>
+    </div>
+   
+    
+  </body>
+</html>

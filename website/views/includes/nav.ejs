@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md sticky-top navbar-light bg-success ">
+    <a href="#" class="navbar-brand">
+        <img src="/images/book.jpg" height="28" alt="CoolBrand">
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarCollapse">
+        <div class="navbar-nav ">
+            <a href="/" class="nav-item nav-link active ">Home</a>
+            <a href="#" class="nav-item nav-link">Profile</a>
+            <a href="/book/searchBook" class="nav-item nav-link">Add Book</a>
+            
+        </div>
+        <div class="navbar-nav ml-auto">
+            <% if (!isAuthenticated) { %>
+
+                <a href="/auth/login" class="nav-item nav-link">Login</a>           
+                <a href="/auth/signup" class="nav-item nav-link">Sign Up</a>
+            <% } else { %>
+                <a href="/auth/logout" class="nav-item nav-link">Logout</a>  
+            <% } %>
+
+        </div>
+    </div>
+</nav>

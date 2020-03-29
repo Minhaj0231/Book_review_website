@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <%-  include('../includes/head.ejs') %>
+  <body>
+    <style>
+      .space{
+      margin: 5px;
+      border: 5px;
+      border-style: solid;
+      border-color: rgb(160, 97, 38);
+      border-radius: 15px;
+
+    }
+    </style>
+
+
+
+    <%-  include('../includes/nav.ejs') %>
+
+    <div class="m-5">
+
+    
+       
+
+      <h2 class="text-center">Search Book</h2>
+
+      
+    <form action="/book/searchBook" method="POST">
+        <div class="form-group">
+        <label for="bookName">Email:</label>
+        <input type="text" class="form-control" id="bookName" placeholder="Enter Book name" name="bookName"   value="<%= oldInput.bookName %>" >
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+    <% if (bookdata) { %>
+      <div class="container p-3 ">
+        <div class = "row">
+  
+    <% bookdata.forEach(function(item){ %>
+      
+      
+      
+      <div class = "col-sm-12 col-md-6 col-lg-4 p-3">             
+        <div class="card space  h-100  space" onmouseover="hover(this)" onmouseout= "endHover(this) " >
+        
+          
+          <% if (item.volumeInfo.imageLinks) { %>
+            <img class="card-img-top" src="<%= item.volumeInfo.imageLinks.smallThumbnail %>" alt="book image" height="300" >
+            <% } %>  
+            
+          
+        
+         <div class="card-header"> <h2 class="text-center"><%= item.volumeInfo.title %></h2></div>
+         <div class="card-body text-center"><h5><b>Authors</b> </h5>
+              <p><%= item.volumeInfo.authors%></p>  
+              <!-- <% if (item.volumeInfo.imageLinks) { %>
+              <p><%= item.volumeInfo.imageLinks.smallThumbnail %></p> 
+              <% } %>             -->
+        </div> 
+        <div class="card-footer">
+                  
+                  
+              <form method="post"   enctype="multipart/form-data">
+                  <input type="hidden" name = "id"  value ='' >
+                  <button type="submit" name="btndelete" >Delete</button>
+              </form>
+                   </div>
+                  
+               </div>
+             </div>
+      
+    <% }); %>
+      </div>
+      </div>
+
+    <% } %>
+    
+   
+    </div>
+
+
+
+
+
+    <script>
+        function hover(x) {
+      x.style.border = "15px";
+      x.style.borderStyle = "solid";
+      x.style.borderRadius =  "50px";
+      x.style.borderColor = "red";
+          }
+
+
+        function endHover (x) {
+            x.style.border = "5px";
+            x.style.borderStyle = "solid";
+            x.style.borderRadius =  "15px";
+            x.style.borderColor = "rgb(160, 97, 38)";
+        }
+
+      
+    </script>
+   
+    
+  </body>
+
+
+
+
+
+</html>
