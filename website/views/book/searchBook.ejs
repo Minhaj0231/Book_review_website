@@ -62,9 +62,11 @@
         <div class="card-footer">
                   
                   
-              <form method="post"   enctype="multipart/form-data">
-                  <input type="hidden" name = "id"  value ='' >
-                  <button type="submit" name="btndelete" >Delete</button>
+              <form action="/book/addBook" method="post"  >
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <input type="hidden" name = "id"  value =<%= item.id %> >
+                  
+                  <button type="submit" name="btndelete" >ADD</button>
               </form>
                    </div>
                   
