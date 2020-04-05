@@ -4,9 +4,64 @@
   <body>
     <%-  include('../includes/nav.ejs') %>
 
+    <div class="m-5 ">
+
+      <div class="row ">
+        <div class=" col-sm-12 col-md-6 col-lg-4 p-3">
+          <img src="<%= bookdata.volumeInfo.imageLinks.smallThumbnail %>" class="rounded" alt="Cinque Terre" width="100%" height="200">
+        </div>
+        <div class=" col-sm-12 col-md-6 col-lg-8 p-3 text-center ">
+          <h3> <%= bookdata.volumeInfo.title %></h3>
+          <h4>Authers</h4>
+          <h5><%= bookdata.volumeInfo.authors%></h5>
+        </div>
+     
+      </div>
+
     
-    
-      
+
+    <div class="mt-3" > 
+      <div class="text-center"> 
+        <button data-toggle="collapse" data-target="#desc"  ><h3> Description</h3></button>
+      </div>
+
+      <div id="desc" class="collapse m-3">
+       <p> <%= desc%></p>
+
+      </div>
+ 
+
+    </div>
+
+
+    <div class="mt-3" > 
+      <div class="text-center"> 
+        <button data-toggle="collapse" data-target="#review"  ><h3> Review</h3></button>
+      </div>
+
+      <div id="review" class="collapse   m-3">
+        <form  action="/action_page.php">  
+          <div class="form-group">    
+            <input type="text"  class=" form-control input-lg" id="email" name="reivew" placeholder="Enter Comment">   
+          </div>     
+            <button type="submit" class="btn btn-primary ">AddComment</button>
+          </form>
+          
+          <h3 class="text-center">Comments</h3>
+
+
+        <p  style="border-width: 5px;border-color: blue;border-style: solid; border-radius: 5%; ">
+           <span class="font-weight-bold">abc@gmail.com: </span> This is a good book. I enjoyed It very much.
+         </p>
+
+      </div>
+ 
+
+    </div>
+
+
+  </div>
+   
     
   </body>
 </html>

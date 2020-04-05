@@ -20,7 +20,13 @@
     <div class="m-5">
 
     
-       
+      <% if (errorMessage) { %>
+        <div class="row">
+         <div class="col-lg-3 col-md-2 col-sm-1"></div>
+         <div class="col-lg-6 col-md-8 col-sm- 10 bg-danger text-center"> <%= errorMessage %> </div>
+         <div class="col-lg-3 col-md-2 col-sm-1"></div>        
+        </div>
+      <% } %>
 
       <h2 class="text-center">Search Book</h2>
 
@@ -47,7 +53,7 @@
         
           
           <% if (item.volumeInfo.imageLinks) { %>
-            <img class="card-img-top" src="<%= item.volumeInfo.imageLinks.smallThumbnail %>" alt="book image" height="300" >
+            <img class="card-img-top img-responsive" src="<%= item.volumeInfo.imageLinks.smallThumbnail %>" alt="book image" height="300" >
             <% } %>  
             
           
@@ -55,9 +61,7 @@
          <div class="card-header"> <h2 class="text-center"><%= item.volumeInfo.title %></h2></div>
          <div class="card-body text-center"><h5><b>Authors</b> </h5>
               <p><%= item.volumeInfo.authors%></p>  
-              <!-- <% if (item.volumeInfo.imageLinks) { %>
-              <p><%= item.volumeInfo.imageLinks.smallThumbnail %></p> 
-              <% } %>             -->
+             
         </div> 
         <div class="card-footer">
                   
